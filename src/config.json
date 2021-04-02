@@ -4,5 +4,13 @@
   "database": {
     "offline": "mongodb://localhost:27017/test"
   },
-  "publicFolder": "public/"
+  "publicFolder": "public/",
+  "styles": {
+    "link": "http://localhost:8080/",
+    "index": ["index"]
+  },
+  "scripts": {
+    "link": "http://localhost:8080/",
+    "index": ["index"]
+  }
 }

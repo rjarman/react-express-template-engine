@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const Manifest = require('webpack-manifest-plugin');
@@ -11,52 +10,29 @@ const config = [
   {
     name: 'static',
     entry: {
-      index: './src/pages/Index.tsx',
+      index: './src/pages/Index/Index.ts',
     },
     output: {
-      filename: '[name].bundle.js',
+      filename: '[name].min.js',
       path: path.resolve(__dirname, 'dist', 'public'),
       publicPath: publicPath,
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.ts', '.js'],
     },
     stats: {
       warningsFilter: [/critical dependency:/i, /module not found:/i],
     },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          commons: {
-            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-        },
-      },
-    },
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)$/,
+          test: /\.(ts)$/,
           use: 'ts-loader',
           exclude: /node_modules/,
         },
         {
           test: /\.scss$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        },
-        {
-          test: /\.(mp4|png|jpg|svg|jpeg|webp|woff2|woff|ttf)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[contenthash].[ext]',
-                outputPath: '',
-              },
-            },
-          ],
         },
       ],
     },
@@ -68,13 +44,8 @@ const config = [
         hashDigest: 'hex',
         hashDigestLength: 20,
       }),
-      new HtmlWebpackPlugin({
-        filename: '../index.html',
-        chunks: ['index'],
-        template: 'src/site_template.html',
-      }),
       new MiniCssExtractPlugin({
-        filename: '[contenthash].css',
+        filename: '[name].min.css',
       }),
       new Manifest(),
     ],
@@ -85,7 +56,7 @@ const config = [
     node: {
       __dirname: false,
     },
-    entry: './src/server.ts',
+    entry: { server: './src/server.ts' },
     output: {
       filename: 'server.bundle.js',
       path: path.resolve(__dirname, 'dist'),
@@ -105,11 +76,7 @@ const config = [
           exclude: /node_modules/,
         },
         {
-          test: /\.scss$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        },
-        {
-          test: /\.(mp4|png|jpg|svg|jpeg|webp|woff2|woff|ttf)$/,
+          test: /\.(mp4|png|jpg|svg|jpeg|webp|ico|woff2|woff|ttf)$/,
           use: [
             {
               loader: 'file-loader',
@@ -131,13 +98,10 @@ const config = [
       }),
       new CopyPlugin({
         patterns: [
-          { from: 'src/public/favicon.ico', to: 'public/[name].[ext]' },
+          { from: 'src/public/*.*', to: 'public/[contenthash].[ext]' },
         ],
       }),
       new Manifest(),
-      new MiniCssExtractPlugin({
-        filename: '[contenthash].css',
-      }),
     ],
   },
 ];
