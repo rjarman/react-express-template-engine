@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Color } from '../server.types';
-import { database } from '../config.json';
+import { database } from '../app.json';
 
 export class DatabaseController {
   /**

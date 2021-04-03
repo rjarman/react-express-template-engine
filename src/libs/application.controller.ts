@@ -7,7 +7,7 @@ import {
   ServerArg,
 } from '../server.types';
 import { Color } from '../server.types';
-import { port, address, publicFolder } from '../config.json';
+import { port, address, publicFolder } from '../app.json';
 import path from 'path';
 import { DatabaseController } from './database.controller';
 
