@@ -1,5 +1,5 @@
 import React from 'react';
-import * as sampleImage from '../../public/black.png';
+import * as sampleImage from '../../public/logo.png';
 import * as favicon from '../../public/favicon.ico';
 
 interface IndexProps {
