@@ -9,7 +9,7 @@ import {
   Router as router,
   Application as app,
 } from 'express';
-import { fetchData } from './libs/routes/routerResponse';
+import { fetchData } from './libs/routerResponse';
 import { colorTheme } from './libs/misc/colorTheme';
 
 /**

@@ -1,5 +1,5 @@
-import { Color } from '../server.types';
-import { Request, Response, NextFunction } from '../server.types';
+import { Color } from '../../server.types';
+import { Request, Response, NextFunction } from '../../server.types';
 
 export const WatcherMiddleware = (
   req: Request,

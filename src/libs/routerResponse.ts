@@ -1,8 +1,8 @@
 import { performance } from 'perf_hooks';
 import { createElement } from 'react';
 import { renderToNodeStream } from 'react-dom/server';
-import { Color } from '../../server.types';
-import { Request, Response } from '../../server.types';
+import { Color } from '../server.types';
+import { Request, Response } from '../server.types';
 
 export const fetchData = (
   req: Request,

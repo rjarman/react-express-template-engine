@@ -5,10 +5,10 @@ import {
   SetHeaderMiddleware,
   TextParserMiddleware,
   CookiesParserMiddleware,
-} from './middleware/common.middleware';
-import { WatcherMiddleware } from './middleware/watcher.middleware';
+} from './libs/middleware/common.middleware';
+import { WatcherMiddleware } from './libs/middleware/watcher.middleware';
 import { DatabaseController } from './libs/database.controller';
-import { IndexRoute } from './libs/routes/index.route';
+import { IndexRoute } from './pages/Index/index.route';
 
 @ServerCore({
   middleware: [

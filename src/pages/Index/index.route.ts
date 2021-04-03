@@ -1,4 +1,4 @@
-import { Index } from '../../pages/Index/Index.view';
+import { Index } from './Index.view';
 import {
   FetchData,
   Response,
@@ -6,7 +6,7 @@ import {
   RequestHandler,
   ViewInt,
 } from '../../server.types';
-import { scripts, styles } from '../../config.json';
+import { scripts, styles } from '../../app.json';
 
 export class IndexRoute implements ViewInt {
   router(): RequestHandler {
