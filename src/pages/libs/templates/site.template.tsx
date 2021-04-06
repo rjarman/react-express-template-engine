@@ -1,7 +1,7 @@
 import React from 'react';
-import { scripts, styles } from '../../config.json';
+import { scripts, styles } from './config.json';
 import { TemplateProps } from '../pages.type';
-import * as favicon from '../public/favicon.ico';
+import * as favicon from '../../assets/favicon.ico';
 
 export class SiteTemplate extends React.Component<TemplateProps> {
   private __styles: { [key: string]: string[] | string };

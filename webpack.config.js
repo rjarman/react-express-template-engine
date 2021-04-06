@@ -98,7 +98,7 @@ const config = [
       }),
       new CopyPlugin({
         patterns: [
-          { from: 'src/public/*.*', to: 'public/[contenthash].[ext]' },
+          { from: 'src/pages/assets/*.*', to: 'public/[contenthash].[ext]' },
         ],
       }),
       new Manifest(),

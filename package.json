@@ -1,6 +1,6 @@
 {
   "name": "react-express-template-engine",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "This is an example of custom template engin in express using react in server side.",
   "main": "dist/server.bundle.js",
   "scripts": {

@@ -1,4 +1,4 @@
-import { CommonEvents } from '../common.event';
+import { CommonEvents } from '../libs/events/common.event';
 import { IndexEvents } from './Index.event';
 import './Index.scss';
 
