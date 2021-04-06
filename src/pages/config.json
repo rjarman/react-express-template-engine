@@ -1,10 +1,4 @@
 {
-  "address": "localhost",
-  "port": 8080,
-  "database": {
-    "offline": "mongodb://localhost:27017/test"
-  },
-  "publicFolder": "public/",
   "styles": {
     "link": "http://localhost:8080/",
     "index": ["index"]

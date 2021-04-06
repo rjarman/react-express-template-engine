@@ -5,7 +5,7 @@ import {
   Request,
   RequestHandler,
   ViewInt,
-} from '../../server.types';
+} from '../../libs/server.types';
 
 export class IndexRoute implements ViewInt {
   router(): RequestHandler {

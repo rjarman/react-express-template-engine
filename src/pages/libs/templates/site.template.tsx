@@ -1,6 +1,6 @@
 import React from 'react';
-import { scripts, styles } from '../app.json';
-import { TemplateProps } from './pages.type';
+import { scripts, styles } from '../../config.json';
+import { TemplateProps } from '../pages.type';
 import * as favicon from '../public/favicon.ico';
 
 export class SiteTemplate extends React.Component<TemplateProps> {

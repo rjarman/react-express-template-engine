@@ -1,5 +1,5 @@
 import { ApplicationHandler } from './application.controller';
-import { ServerArg, Class } from '../server.types';
+import { ServerArg, Class } from './server.types';
 
 export const ServerCore = (serverArgs: ServerArg) => {
   return (_: Class<any>) => {

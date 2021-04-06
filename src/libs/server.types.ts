@@ -1,4 +1,4 @@
-import { DatabaseController } from './libs/database.controller';
+import { DatabaseController } from './database.controller';
 import { Schema as _Schema, Model as _Model, Document } from 'mongoose';
 import mongoose from 'mongoose';
 const ex = require('express');
@@ -9,8 +9,8 @@ import {
   Router as router,
   Application as app,
 } from 'express';
-import { fetchData } from './libs/routerResponse';
-import { colorTheme } from './libs/misc/colorTheme';
+import { fetchData } from './routerResponse';
+import { colorTheme } from './misc/colorTheme';
 
 /**
  * @Server

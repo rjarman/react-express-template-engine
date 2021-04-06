@@ -1,5 +1,5 @@
 import React from 'react';
-import { SiteTemplate } from '../site.template';
+import { SiteTemplate } from '../libs/templates/site.template';
 import * as sampleImage from '../../public/logo.png';
 
 export class Index extends React.Component {

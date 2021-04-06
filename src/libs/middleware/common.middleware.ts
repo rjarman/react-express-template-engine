@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, express } from '../../server.types';
+import { Request, Response, NextFunction, express } from '../server.types';
 
 export const TextParserMiddleware = (() => {
   return express.text();
