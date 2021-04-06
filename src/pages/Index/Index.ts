@@ -1,8 +1,6 @@
 import { CommonEvents } from '../common.event';
-
-import '../style.scss';
-import './Index.scss';
 import { IndexEvents } from './Index.event';
+import './Index.scss';
 
 new CommonEvents();
 new IndexEvents();
