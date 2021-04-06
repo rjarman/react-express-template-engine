@@ -6,12 +6,34 @@ const CopyPlugin = require('copy-webpack-plugin');
 const Manifest = require('webpack-manifest-plugin');
 const publicPath = 'http://localhost:8080/';
 
+const hashPlugin = new webpack.HashedModuleIdsPlugin({
+  context: __dirname,
+  hashFunction: 'sha256',
+  hashDigest: 'hex',
+  hashDigestLength: 20,
+});
+
+const fileLoader = {
+  test: /\.(mp4|png|jpg|svg|jpeg|webp|ico|woff2|woff|ttf)$/,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: '[contenthash].[ext]',
+        emitFile: false,
+      },
+    },
+  ],
+};
+
+const externalScripts = {
+  index: './src/pages/Index/Index.ts',
+};
+
 const config = [
   {
     name: 'static',
-    entry: {
-      index: './src/pages/Index/Index.ts',
-    },
+    entry: externalScripts,
     output: {
       filename: '[name].min.js',
       path: path.resolve(__dirname, 'dist', 'public'),
@@ -34,16 +56,12 @@ const config = [
           test: /\.scss$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         },
+        fileLoader,
       ],
     },
     plugins: [
       new CleanWebpackPlugin(),
-      new webpack.HashedModuleIdsPlugin({
-        context: __dirname,
-        hashFunction: 'sha256',
-        hashDigest: 'hex',
-        hashDigestLength: 20,
-      }),
+      hashPlugin,
       new MiniCssExtractPlugin({
         filename: '[name].min.css',
       }),
@@ -56,7 +74,7 @@ const config = [
     node: {
       __dirname: false,
     },
-    entry: { server: './src/server.ts' },
+    entry: './src/server.ts',
     output: {
       filename: 'server.bundle.js',
       path: path.resolve(__dirname, 'dist'),
@@ -75,27 +93,11 @@ const config = [
           use: 'ts-loader',
           exclude: /node_modules/,
         },
-        {
-          test: /\.(mp4|png|jpg|svg|jpeg|webp|ico|woff2|woff|ttf)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[contenthash].[ext]',
-                emitFile: false,
-              },
-            },
-          ],
-        },
+        fileLoader,
       ],
     },
     plugins: [
-      new webpack.HashedModuleIdsPlugin({
-        context: __dirname,
-        hashFunction: 'sha256',
-        hashDigest: 'hex',
-        hashDigestLength: 20,
-      }),
+      hashPlugin,
       new CopyPlugin({
         patterns: [
           { from: 'src/pages/assets/**/*.*', to: 'public/[contenthash].[ext]' },
